@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
+
+// Add the SQL Server database context and connection.
+builder.AddSqlServerDbContext<EntryDbContext>("sqldb");
 
 // Add services to the container.
 builder.Services.AddProblemDetails();
@@ -28,6 +33,9 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+// Add a sample API to test the database
+app.MapSampleDatabaseApis();
 
 app.MapDefaultEndpoints();
 
