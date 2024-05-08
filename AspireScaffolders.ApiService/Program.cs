@@ -6,6 +6,9 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+// Add support for Azure Table Storage
+builder.AddAzureTableClient("entries");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +31,9 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+// Adds a sample using the Table Service APIs
+app.MapAzureTableSampleApi();
 
 app.MapDefaultEndpoints();
 
