@@ -35,7 +35,7 @@ app.MapGet("/weatherforecast", () =>
 });
 
 // Add a sample API to test the database
-app.MapSampleDatabaseApis();
+app.MapSampleSQLServerDatabaseApis();
 
 app.MapDefaultEndpoints();
 

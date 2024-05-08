@@ -14,7 +14,7 @@ public class EntryDbContext(DbContextOptions<EntryDbContext> options) : DbContex
 
 public static class EntrySampleDatabaseApiEndpointExtensions
 {
-    public static WebApplication MapSampleDatabaseApis(this WebApplication app)
+    public static WebApplication MapSampleSQLServerDatabaseApis(this WebApplication app)
     {
         app.MapGet("/", async (EntryDbContext entryDbContext) =>
         {
