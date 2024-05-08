@@ -16,7 +16,7 @@ public static class EntrySampleDatabaseApiEndpointExtensions
 {
     public static WebApplication MapAzureTableSampleApi(this WebApplication app)
     {
-        app.MapGet("/tableServiceSample", async (TableServiceClient tableServiceClient) =>
+        app.MapGet("/azuretablesample", async (TableServiceClient tableServiceClient) =>
         {
             var entry = new Entry();
             await tableServiceClient.CreateTableIfNotExistsAsync("entries");
