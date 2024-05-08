@@ -6,6 +6,12 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+// Add support for Azure Storage Queues
+builder.AddAzureQueueClient("queues");
+
+// Add example Worker for processing incoming messages
+builder.AddAzureStorageQueueExample();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +34,9 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+// Map the Azure Storage Queue example API
+app.MapAzureStorageQueueExampleAPI();
 
 app.MapDefaultEndpoints();
 
