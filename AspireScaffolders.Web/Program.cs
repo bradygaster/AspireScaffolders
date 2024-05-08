@@ -10,7 +10,8 @@ builder.AddServiceDefaults();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.Services.AddOutputCache();
+// Add Redis for output caching
+builder.AddRedisOutputCache("cache");
 
 builder.Services.AddHttpClient<WeatherApiClient>(client =>
     {
