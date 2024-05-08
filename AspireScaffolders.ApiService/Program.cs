@@ -6,6 +6,9 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+// Add support for Azure Blob Storage
+builder.AddAzureBlobClient("blobs");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,6 +33,9 @@ app.MapGet("/weatherforecast", () =>
 });
 
 app.MapDefaultEndpoints();
+
+// Add a sample API for testing blob storage
+app.MapBlobStorageSampleApi();
 
 app.Run();
 
