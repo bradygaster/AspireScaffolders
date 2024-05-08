@@ -6,6 +6,9 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
+// Add PostgreSQL to the app
+builder.AddNpgsqlDbContext<EntryDbContext>("postgresqldb");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +31,9 @@ app.MapGet("/weatherforecast", () =>
         .ToArray();
     return forecast;
 });
+
+// Add a sample API to test the database
+app.MapSampleDatabaseApis();
 
 app.MapDefaultEndpoints();
 
